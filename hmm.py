@@ -35,13 +35,16 @@ transmat = np.array([
     [0.00, 0.00, 1.00],
 ])
 
-emissionprob = np.array([
-    [0.30, 0.70],
-    [1.00, 0.00],
-    [0.00, 1.00],
-])
+# emissionprob = np.array([
+#     [0.30, 0.70],
+#     [1.00, 0.00],
+#     [0.00, 1.00],
+# ])
 
-model = hmm.MultinomialHMM(n_components=len(state_space), n_iter=100, tol=0.01, random_state=42)
+np.random.seed(42)
+emissionprob = np.random.rand(10, 26)
+
+model = hmm.MultinomialHMM(n_components=10, n_iter=300, tol=0.01, random_state=42)
 model.startprob_ = startprob
 model.transmat_ = transmat
 model.emissionprob_ = emissionprob
